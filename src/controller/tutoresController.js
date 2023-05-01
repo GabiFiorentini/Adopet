@@ -3,6 +3,23 @@ import cadastroValidacao from "../validations/cadastroTutoresValidations.js";
 import { ObjectId } from 'mongodb';
 
 class TutorController {
+    static listarTutores =  (req, res) => {
+        tutores.find()
+        
+        .then(tutores => {
+            if(tutores.length == 0) {
+                return res.status(404).json({message: "Não encontrado"})
+            }
+
+            res.status(200).json(tutores)
+            
+        })
+
+        .catch(err => {
+            res.status(500).json({ message: 'Erro ao buscar tutores' })
+        })
+    }
+
     static cadastrarTutor = async (req, res) => {
         const tutor = new tutores(req.body)
 
