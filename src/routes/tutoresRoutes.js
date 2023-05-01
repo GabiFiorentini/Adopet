@@ -5,6 +5,7 @@ const router = express.Router()
 
 router 
     .get("/tutores", TutorController.listarTutores)
+    .get("/tutores/:id", TutorController.listarTutorPorID)
     .post("/tutores", TutorController.cadastrarTutor)
     .put("/tutores/:id", TutorController.atualizarTutor)
     
