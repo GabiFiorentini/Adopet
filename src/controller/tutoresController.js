@@ -20,6 +20,23 @@ class TutorController {
         })
     }
 
+    static listarTutorPorID = async (req, res) => {
+        const tutorId = new ObjectId(req.params.id)
+
+        try {
+            const tutor = await tutores.findOne({_id: tutorId})
+
+            if(!tutor) {
+                return res.status(404).send({message: 'Tutor não encontrado'})
+            }
+
+            res.status(200).send(tutor)
+
+        } catch(err) {
+            return res.status(500).send({message: 'Erro interno no servidor'})
+        }
+    }
+
     static cadastrarTutor = async (req, res) => {
         const tutor = new tutores(req.body)
 
