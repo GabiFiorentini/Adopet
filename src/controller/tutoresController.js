@@ -94,6 +94,23 @@ class TutorController {
             res.status(500).send({message: `Falha ao atualizar`})
         }
     }
+
+    static excluirTutor = async (req, res) => {
+        const tutorId = new ObjectId(req.params.id)
+
+        try {
+            const tutor = await tutores.findByIdAndDelete({_id: tutorId})
+
+            if(!tutor) {
+                return res.status(404).send({message: `Tutor não encontrado`})
+            }
+
+            res.status(200).send({message: `Tutor excluido com sucesso`})
+
+        } catch(err) {
+            return res.status(500).send({message: 'Erro interno no servidor'})
+        }
+    }
 }
 
 export default TutorController
