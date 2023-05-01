@@ -1,6 +1,5 @@
 class cadastroValidacao {
     static validacaoTutor(dadosCadastro) {
-
         if(!dadosCadastro.nome.trim()) {
             return { error: 'O nome é obrigatório.', statusCode: 400 }
         }

@@ -5,5 +5,6 @@ const router = express.Router()
 
 router 
     .post("/tutores", TutorController.cadastrarTutor)
+    .put("/tutores/:id", TutorController.atualizarTutor)
     
 export default router
